@@ -1,0 +1,48 @@
+@tailwind base;
+@tailwind components;
+
+body {
+  @apply bg-orange-500 m-2;
+}
+
+.section {
+  @apply my-2 p-2 shadow rounded bg-gray-800 text-gray-200 leading-normal text-center text-lg;
+}
+
+.square {
+  @apply bg-white border border-gray-800 text-4xl font-bold p-0 text-center text-black w-20 h-20;
+}
+@tailwind utilities;
+
+body {
+  font: 14px "Century Gothic", Futura, sans-serif;
+  margin: 20px;
+}
+
+ol,
+ul {
+  padding-left: 30px;
+}
+
+.board-row:after {
+  clear: both;
+  content: "";
+  display: table;
+}
+
+.status {
+  margin-bottom: 10px;
+}
+
+.square:focus {
+  outline: none;
+}
+
+.kbd-navigation .square:focus {
+  background: #ddd;
+}
+
+.game {
+  display: flex;
+  flex-direction: row;
+}
