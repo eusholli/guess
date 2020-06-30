@@ -22,11 +22,7 @@ class Board extends React.Component {
       items.push(self.renderSquare(value, i));
     });
 
-    return (
-      <div className="flex flex-wrap mx-auto">
-        <div className="mx-auto">{items}</div>
-      </div>
-    );
+    return <div className="flex flex-wrap justify-center">{items}</div>;
   }
 }
 
@@ -118,7 +114,7 @@ class Game extends React.Component {
           <title>Number Guess</title>
         </Head>
 
-        <header className="section">Number Guess</header>
+        <header className="section text-3xl">Number Guess</header>
         <main className="section">
           <div className="flex flex-row justify-around">
             <div>
