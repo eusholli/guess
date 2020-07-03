@@ -135,14 +135,17 @@ class Game extends React.Component {
           />
         </main>
 
-        <footer className="section">
-          <p className="text-xs text-gray-200 leading-normal text-right">
+        <footer className="section flex justify-between items-center">
+          <div className="text-xs text-gray-200 leading-normal">
+            <a href={"/privacy.html"}>Privacy Policy</a>
+          </div>
+          <div className="text-xs text-gray-200 leading-normal">
             Geoff Hollingworth
             <br />
             <a href={"https://github.com/eusholli/guess"}>
               {"https://github.com/eusholli/guess"}
             </a>
-          </p>
+          </div>
         </footer>
       </div>
     );
