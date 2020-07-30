@@ -1,4 +1,6 @@
+import React from "react";
 import Head from "next/head";
+import PropTypes from "prop-types";
 
 function Square(props) {
   return (
@@ -8,10 +10,19 @@ function Square(props) {
   );
 }
 
+Square.propTypes = {
+  onClick: PropTypes.func,
+  value: PropTypes.string,
+};
+
 class Board extends React.Component {
   renderSquare(value, i) {
     return (
-      <Square key={i} value={value} onClick={() => this.props.onClick(i)} />
+      <Square
+        key={i}
+        value={value.toString()}
+        onClick={() => this.props.onClick(i)}
+      />
     );
   }
 
@@ -25,6 +36,11 @@ class Board extends React.Component {
     return <div className="flex flex-wrap justify-center">{items}</div>;
   }
 }
+
+Board.propTypes = {
+  onClick: PropTypes.func,
+  squares: PropTypes.node,
+};
 
 class Game extends React.Component {
   constructor(props) {
@@ -101,52 +117,28 @@ class Game extends React.Component {
   render() {
     const status = this.state.winner ? "Win in " : "Attempts: ";
     return (
-      <div className="flex-col">
+      <div className="section">
         <Head>
-          <meta charSet="utf-8" />
-          <meta httpEquiv="X-UA-Compatible" content="IE=edge" />
-          <meta
-            name="viewport"
-            content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no"
-          />
-          <meta name="description" content="Description" />
-          <meta name="keywords" content="Keywords" />
-          <title>Number Guess</title>
+          <title>Guess - Play</title>
         </Head>
 
-        <header className="section text-3xl">Number Guess</header>
-        <main className="section">
-          <div className="flex flex-row justify-around">
-            <div>
-              <button
-                className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 my-2 rounded"
-                onClick={this.resetGame.bind(this)}
-              >
-                Play Again
-              </button>
-            </div>
-            <div className="bg-blue-500 text-white font-bold py-2 px-4 my-2 rounded">
-              {status} {this.state.attempts}
-            </div>
+        <div className="flex flex-row justify-around">
+          <div>
+            <button
+              className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 my-2 rounded"
+              onClick={this.resetGame.bind(this)}
+            >
+              Play Again
+            </button>
           </div>
-          <Board
-            squares={this.state.squares}
-            onClick={(i) => this.handleClick(i)}
-          />
-        </main>
-
-        <footer className="section flex justify-between items-center">
-          <div className="text-xs text-gray-200 leading-normal">
-            <a href={"/privacy.html"}>Privacy Policy</a>
+          <div className="bg-blue-500 text-white font-bold py-2 px-4 my-2 rounded">
+            {status} {this.state.attempts}
           </div>
-          <div className="text-xs text-gray-200 leading-normal">
-            Geoff Hollingworth
-            <br />
-            <a href={"https://github.com/eusholli/guess"}>
-              {"https://github.com/eusholli/guess"}
-            </a>
-          </div>
-        </footer>
+        </div>
+        <Board
+          squares={this.state.squares}
+          onClick={(i) => this.handleClick(i)}
+        />
       </div>
     );
   }
