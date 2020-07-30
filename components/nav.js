@@ -1,9 +1,10 @@
-import Link from 'next/link'
+import Link from "next/link";
+import React from "react";
 
 const links = [
-  { href: 'https://github.com/vercel/next.js', label: 'GitHub' },
-  { href: 'https://nextjs.org/docs', label: 'Docs' },
-]
+  { href: "https://github.com/vercel/next.js", label: "GitHub" },
+  { href: "https://nextjs.org/docs", label: "Docs" },
+];
 
 export default function Nav() {
   return (
@@ -25,5 +26,5 @@ export default function Nav() {
         </ul>
       </ul>
     </nav>
-  )
+  );
 }

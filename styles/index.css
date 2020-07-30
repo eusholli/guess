@@ -5,6 +5,36 @@ body {
   @apply bg-orange-500 m-2;
 }
 
+p {
+  @apply text-left p-2 pt-0 text-base;
+}
+
+ul,
+ol {
+  @apply pl-8 pb-8;
+}
+li {
+  @apply list-disc;
+}
+
+h1,
+h2,
+h3 {
+  @apply text-left px-2 pt-0 pb-2 m-0;
+}
+
+h1 {
+  @apply text-2xl border-orange-500 border-solid border-t-4 pt-2;
+}
+
+h2 {
+  @apply text-xl;
+}
+
+h3 {
+  @apply text-lg underline;
+}
+
 .section {
   @apply my-2 p-2 shadow rounded bg-gray-800 text-gray-200 leading-normal text-center text-lg;
 }
@@ -16,33 +46,8 @@ body {
 
 body {
   font: 14px "Century Gothic", Futura, sans-serif;
-  margin: 20px;
-}
-
-ol,
-ul {
-  padding-left: 30px;
-}
-
-.board-row:after {
-  clear: both;
-  content: "";
-  display: table;
-}
-
-.status {
-  margin-bottom: 10px;
 }
 
 .square:focus {
   outline: none;
-}
-
-.kbd-navigation .square:focus {
-  background: #ddd;
-}
-
-.game {
-  display: flex;
-  flex-direction: row;
 }
