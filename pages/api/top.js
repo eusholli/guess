@@ -1,22 +1,14 @@
-import nextConnect from "next-connect";
-import middleware from "../../middleware/database";
+import database from "../../middleware/redis";
+import createHandler from "../../middleware/createhandler";
 
-const handler = nextConnect();
+const handler = createHandler();
 
-handler.use(middleware);
+handler.use(database);
 
 handler.get(async (req, res) => {
-  try {
-    const docs = await req.db
-      .collection("guess.scores")
-      .aggregate([{ $sort: { score: 1 } }, { $limit: 5 }])
-      .toArray();
-
-    console.log(docs);
-    res.json(docs);
-  } catch (err) {
-    console.error(err);
-  }
+  console.log("In apiroute top");
+  const docs = await req.dbp.top(5);
+  res.json(docs);
 });
 
 export default handler;

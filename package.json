@@ -10,14 +10,20 @@
   },
   "dependencies": {
     "@auth0/auth0-react": "1.0.0",
+    "@sentry/node": "5.20.1",
+    "@sentry/react": "5.20.1",
+    "axios": "0.19.2",
+    "http-errors": "1.8.0",
     "isomorphic-unfetch": "3.0.0",
     "mongodb": "3.5.9",
     "next": "^9.2.0",
     "next-absolute-url": "1.2.2",
     "next-connect": "0.8.1",
+    "next-with-error": "1.2.0",
     "prop-types": "15.7.2",
     "react": "^16.12.0",
-    "react-dom": "^16.12.0"
+    "react-dom": "^16.12.0",
+    "redis": "3.0.2"
   },
   "devDependencies": {
     "eslint": "7.3.1",

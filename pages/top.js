@@ -1,31 +1,12 @@
-import fetch from "isomorphic-unfetch";
+import axios from "axios";
 import React from "react";
 import PropTypes from "prop-types";
-import { useAuth0, withAuthenticationRequired } from "@auth0/auth0-react";
+import { withAuthenticationRequired } from "@auth0/auth0-react";
+// import Error from "./_error.js";
 
 const TopScores = ({ scores }) => {
-  //  const [results, setResults] = useState(scores);
-
-  const {
-    isLoading,
-    isAuthenticated,
-    error,
-    user,
-    loginWithRedirect,
-    logout,
-  } = useAuth0();
-
-  console.log(
-    isLoading,
-    isAuthenticated,
-    error,
-    user,
-    loginWithRedirect,
-    logout
-  );
-
   return (
-    <div className="md:px-32 w-full">
+    <div className="w-full">
       <div className="shadow overflow-hidden rounded border-b border-gray-200">
         <table className="min-w-full bg-white text-center">
           <thead className="bg-gray-800 text-white">
@@ -63,13 +44,32 @@ TopScores.propTypes = {
 };
 
 export async function getServerSideProps() {
-  const res = await fetch(`${process.env.NEXT_PUBLIC_API_BASE}/api/top`);
-  const json = await res.json();
-  return {
-    props: {
-      scores: json,
-    },
-  };
+  try {
+    const response = await axios(`${process.env.NEXT_PUBLIC_API_BASE}/api/top`);
+    return {
+      props: {
+        scores: response.data,
+      },
+    };
+  } catch (error) {
+    console.log("error caught");
+    if (error.response) {
+      return {
+        props: {
+          error: {
+            status: error.response.status,
+            message: error.response.data.message,
+          },
+        },
+      };
+    } else {
+      return {
+        props: {
+          error: { status: 500, message: "Unknown Error" },
+        },
+      };
+    }
+  }
 }
 
 export default withAuthenticationRequired(TopScores);
