@@ -1,83 +1,13 @@
-import React from "react";
+import React, { useContext, useState } from "react";
 import Head from "next/head";
 import PropTypes from "prop-types";
+import GameContext from "../contexts/GameContext";
 
 function Square(props) {
-  return (
-    <button className="square" onClick={props.onClick}>
-      {props.value}
-    </button>
-  );
-}
-
-Square.propTypes = {
-  onClick: PropTypes.func,
-  value: PropTypes.string,
-};
-
-class Board extends React.Component {
-  renderSquare(value, i) {
-    return (
-      <Square
-        key={i}
-        value={value.toString()}
-        onClick={() => this.props.onClick(i)}
-      />
-    );
-  }
-
-  render() {
-    const items = [];
-    const self = this;
-    this.props.squares.forEach(function (value, i) {
-      items.push(self.renderSquare(value, i));
-    });
-
-    return <div className="flex flex-wrap justify-center">{items}</div>;
-  }
-}
-
-Board.propTypes = {
-  onClick: PropTypes.func,
-  squares: PropTypes.node,
-};
-
-class Game extends React.Component {
-  constructor(props) {
-    super(props);
-
-    this.state = this.startGame();
-  }
-
-  startGame() {
-    const squares = this.initSquares();
-    const attempts = 0;
-    const answer = getRandomInt(1, 30);
-    const winner = false;
-
-    return {
-      squares,
-      attempts,
-      answer,
-      winner,
-    };
-  }
-
-  resetGame() {
-    this.setState(this.startGame());
-  }
-
-  initSquares() {
-    let squares = [];
-    for (let i = 1; i < 31; i++) {
-      squares.push(i);
-    }
-    return squares;
-  }
-
-  handleClick(i) {
-    const squares = this.state.squares.slice();
-    const attempts = this.state.attempts;
+  const [game, setGame] = useContext(GameContext);
+  const handleClick = (i) => {
+    const squares = game.squares.slice();
+    const attempts = game.attempts;
     let wrong;
 
     if (attempts >= 25) {
@@ -97,9 +27,9 @@ class Game extends React.Component {
     const winner = "😍";
     let win;
 
-    if (this.state.winner || (squares && squares[i] === wrong)) {
+    if (game.winner || (squares && isNaN(squares[i]))) {
       return;
-    } else if (squares[i] === this.state.answer) {
+    } else if (squares[i] === game.answer) {
       squares[i] = winner;
       win = true;
     } else {
@@ -107,16 +37,73 @@ class Game extends React.Component {
       win = false;
     }
 
-    this.setState({
+    setGame({
       squares: squares,
       attempts: attempts + 1,
       winner: win,
+      answer: game.answer,
     });
-  }
+  };
+  return (
+    <button className="square" onClick={() => handleClick(props.i)}>
+      {props.value}
+    </button>
+  );
+}
 
-  render() {
-    const status = this.state.winner ? "Win in " : "Attempts: ";
-    return (
+Square.propTypes = {
+  value: PropTypes.string,
+  i: PropTypes.number,
+};
+
+function Board(props) {
+  const renderSquare = (value, i) => {
+    return <Square key={i} i={i} value={value.toString()} />;
+  };
+  const items = [];
+  props.squares.forEach(function (value, i) {
+    items.push(renderSquare(value, i));
+  });
+
+  return <div className="flex flex-wrap justify-center">{items}</div>;
+}
+
+Board.propTypes = {
+  squares: PropTypes.node,
+};
+
+function Game() {
+  const initSquares = () => {
+    let squares = [];
+    for (let i = 1; i < 31; i++) {
+      squares.push(i);
+    }
+    return squares;
+  };
+
+  const startGame = () => {
+    const squares = initSquares();
+    const attempts = 0;
+    const answer = getRandomInt(1, 30);
+    const winner = false;
+
+    return {
+      squares,
+      attempts,
+      answer,
+      winner,
+    };
+  };
+
+  const [game, setGame] = useState(startGame());
+
+  const resetGame = () => {
+    setGame(startGame());
+  };
+
+  const status = game.winner ? "Win in " : "Attempts: ";
+  return (
+    <GameContext.Provider value={[game, setGame]}>
       <div className="section">
         <Head>
           <title>Guess - Play</title>
@@ -126,22 +113,19 @@ class Game extends React.Component {
           <div>
             <button
               className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 my-2 rounded"
-              onClick={this.resetGame.bind(this)}
+              onClick={() => resetGame()}
             >
               Play Again
             </button>
           </div>
           <div className="bg-blue-500 text-white font-bold py-2 px-4 my-2 rounded">
-            {status} {this.state.attempts}
+            {status} {game.attempts}
           </div>
         </div>
-        <Board
-          squares={this.state.squares}
-          onClick={(i) => this.handleClick(i)}
-        />
+        <Board squares={game.squares} />
       </div>
-    );
-  }
+    </GameContext.Provider>
+  );
 }
 
 function getRandomInt(min, max) {
