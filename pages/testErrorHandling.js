@@ -1,6 +1,5 @@
 import React from "react";
 import PropTypes from "prop-types";
-import { withAuthenticationRequired } from "@auth0/auth0-react";
 // import Error from "./_error.js";
 
 const TestErrorHandling = ({ scores }) => {
@@ -28,4 +27,4 @@ export async function getServerSideProps() {
   };
 }
 
-export default withAuthenticationRequired(TestErrorHandling);
+export default TestErrorHandling;

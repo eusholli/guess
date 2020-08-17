@@ -56,7 +56,8 @@ class DBP {
 }
 
 function database(req, res, next) {
-  console.log(`in redis database with client: ${client}`);
+  // console.log("client: " + JSON.stringify(client, null, 4));
+  console.log("client.connection_id: " + client.connection_id);
   req.dbp = dbp;
   next();
 }
