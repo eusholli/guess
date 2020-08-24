@@ -20,12 +20,36 @@ An example would be a brokerage that sends monthly statements to its clients. On
 
 ### Privacy as the Default
 
+| Check | Description |
+| :---: | :---------- |
+|  [ ]  |             |
+
 ### Privacy Embedded into Design
+
+| Check | Description |
+| :---: | :---------- |
+|  [ ]  |             |
 
 ### Full Functionality
 
+| Check | Description |
+| :---: | :---------- |
+|  [ ]  |             |
+
 ### End-to-End Security
+
+| Check | Description |
+| :---: | :---------- |
+|  [ ]  |             |
 
 ### Visibility and Transparency
 
+| Check | Description |
+| :---: | :---------- |
+|  [ ]  |             |
+
 ### Respect for User Privacy
+
+| Check | Description |
+| :---: | :---------- |
+|  [ ]  |             |
