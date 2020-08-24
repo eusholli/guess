@@ -1,5 +1,7 @@
 # Data Protocol Lean Compliance
 
+![Privacy by Design applied image](./pbdapplied.png)
+
 ## Introduction
 
 Data compliance is a priority for all code being written that uses personal identifying data that could infringe on privacy. Data Protocol is the world's leading commmunity focusing on the needs of the developer community with respect to data management and privacy. Lean Compliance &copy; integrates the lean approach into how developers already work with git, version control and lean development processes.
