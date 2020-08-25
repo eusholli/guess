@@ -45,15 +45,16 @@ Security is a large issue and more details can be found [here](https://ico.org.u
 
 ### Privacy Embedded into Design
 
-| Check | Description                                                                                                                                 |
-| :---: | :------------------------------------------------------------------------------------------------------------------------------------------ |
-|  [ ]  | We do not store data we do not have to                                                                                                      |
-|  [ ]  | We set minimum possible storage time on all data                                                                                            |
-|  [ ]  | We periodically review the data we hold, and delete anything we don’t need.                                                                 |
-|  [ ]  | We have a policy with standard retention periods where possible, in line with documentation obligations.                                    |
-|  [ ]  | We regularly review our information and erase or anonymise personal data when we no longer need it.                                         |
-|  [ ]  | We clearly identify any personal data that we need to keep for public interest archiving, scientific or historical research, or statistical | purposes. |
-|  [ ]  | We use encryption and/or pseudonymisation where it is appropriate to do so                                                                  |
+| Check | Description                                                                                                                                           |
+| :---: | :---------------------------------------------------------------------------------------------------------------------------------------------------- |
+|  [ ]  | We do not store data we do not have to                                                                                                                |
+|  [ ]  | We set minimum possible storage time on all data                                                                                                      |
+|  [ ]  | We have considered partitioning data and storing in different locations                                                                               |
+|  [ ]  | We periodically review the data we hold, and delete anything we don’t need.                                                                           |
+|  [ ]  | We have a policy with standard retention periods where possible, in line with documentation obligations.                                              |
+|  [ ]  | We regularly review our information and erase or anonymise personal data when we no longer need it.                                                   |
+|  [ ]  | We clearly identify any personal data that we need to keep for public interest archiving, scientific or historical research, or statistical purposes. |
+|  [ ]  | We use encryption and/or pseudonymisation where it is appropriate to do so                                                                            |
 
 ### Full Functionality
 
