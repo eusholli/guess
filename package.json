@@ -11,7 +11,7 @@
   "dependencies": {
     "@sentry/node": "5.20.1",
     "@sentry/react": "5.20.1",
-    "axios": "0.19.2",
+    "axios": "0.21.1",
     "http-errors": "1.8.0",
     "isomorphic-unfetch": "3.0.0",
     "mongodb": "3.5.9",
